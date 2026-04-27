@@ -1,1 +1,560 @@
-# index.html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@rafael___nascimento</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080c0e;--sur:#0e1518;--sur2:#141c20;--sur3:#1b2428;
+  --ac:#00e5a0;--ac2:#00b8ff;--acdim:rgba(0,229,160,.07);
+  --tx:#c8d8d4;--txd:#3d5a55;--bd:rgba(0,229,160,.13);--bdh:rgba(0,229,160,.42);
+  --mono:'Share Tech Mono',monospace;--head:'Rajdhani',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:var(--mono);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,229,160,.012) 2px,rgba(0,229,160,.012) 4px);pointer-events:none;z-index:9999}
+
+/* ── AD BANNER STRIP (topo) ── */
+.ad-strip{
+  width:100%;background:var(--sur);border-bottom:1px solid var(--bd);
+  display:flex;align-items:center;justify-content:center;
+  padding:8px 16px;min-height:64px;
+}
+.ad-box{
+  width:100%;max-width:728px;height:90px;
+  background:var(--sur2);border:1px dashed rgba(0,229,160,.25);
+  border-radius:6px;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:4px;
+}
+.ad-box-label{font-size:10px;letter-spacing:2px;color:var(--txd);text-transform:uppercase}
+.ad-box-sub{font-size:9px;color:rgba(61,90,85,.6);letter-spacing:1px}
+
+/* ── LAYOUT ── */
+.page{max-width:935px;margin:0 auto;padding:0 16px 80px}
+
+/* ── PERFIL ── */
+.profile{display:flex;gap:32px;align-items:flex-start;padding:28px 0 20px}
+.av-zone{flex-shrink:0;position:relative;width:100px;height:100px}
+.av-ring{
+  width:100%;height:100%;border-radius:50%;padding:3px;
+  background:conic-gradient(var(--ac) 0%,var(--ac2) 50%,var(--ac) 100%);
+  animation:spin 8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.av-inner{
+  position:absolute;inset:3px;border-radius:50%;
+  background:var(--sur2);overflow:hidden;
+}
+.av-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+
+.profile-info{flex:1;padding-top:4px}
+.handle-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.handle{font-family:var(--head);font-size:22px;font-weight:600;color:#fff;letter-spacing:1px}
+.follow-btn{
+  background:var(--ac);color:#080c0e;font-family:var(--head);
+  font-weight:700;font-size:13px;letter-spacing:1px;border:none;
+  border-radius:6px;padding:5px 16px;cursor:pointer;transition:opacity .2s;
+}
+.follow-btn:hover{opacity:.85}
+
+.stats{display:flex;gap:24px;margin-bottom:12px}
+.stat{text-align:left}
+.stat-n{font-family:var(--head);font-size:18px;font-weight:700;color:#fff}
+.stat-l{font-size:11px;color:var(--txd)}
+
+.bio{font-size:13px;line-height:1.7;color:var(--tx)}
+.bio strong{color:var(--ac);font-weight:400}
+.bio a{color:var(--ac2);text-decoration:none}
+
+/* ── DIVISOR ── */
+.divider{height:1px;background:var(--bd);margin:4px 0 20px}
+
+.fixed-label{
+  display:flex;align-items:center;gap:10px;margin-bottom:14px;
+}
+.fixed-label span{font-size:10px;letter-spacing:3px;color:var(--ac);text-transform:uppercase}
+.fixed-label::before,.fixed-label::after{content:'';flex:1;height:1px;background:var(--bd)}
+.fixed-label::before{background:linear-gradient(to right,transparent,var(--bd))}
+.fixed-label::after{background:linear-gradient(to left,transparent,var(--bd))}
+
+.fixed-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-bottom:28px;
+}
+@media(min-width:600px){.fixed-grid{grid-template-columns:repeat(4,1fr)}}
+
+.fixed-card{
+  background:var(--sur);border:1px solid var(--bd);border-radius:10px;
+  overflow:hidden;text-decoration:none;color:inherit;
+  transition:border-color .2s,transform .2s,box-shadow .2s;
+  display:flex;flex-direction:column;position:relative;
+}
+.fixed-card:hover{
+  border-color:var(--bdh);transform:translateY(-3px);
+  box-shadow:0 8px 28px rgba(0,229,160,.1);
+}
+.fixed-card-img{
+  width:100%;aspect-ratio:1/1;object-fit:cover;
+  background:var(--sur2);display:block;
+}
+.fixed-card-ph{
+  width:100%;aspect-ratio:1/1;background:var(--sur2);
+  display:flex;align-items:center;justify-content:center;font-size:32px;
+}
+.fixed-card-body{padding:10px 12px 12px;flex:1;display:flex;flex-direction:column;gap:4px}
+.fixed-card-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ac);opacity:.8}
+.fixed-card-title{font-family:var(--head);font-size:14px;font-weight:600;color:#e0f0ec;line-height:1.3}
+.fixed-card-desc{font-size:11px;color:var(--txd);line-height:1.4;flex:1}
+.fixed-card-cta{
+  margin-top:8px;display:flex;align-items:center;justify-content:center;gap:5px;
+  font-family:var(--head);font-size:12px;font-weight:700;
+  color:#080c0e;background:var(--ac);border-radius:5px;padding:6px 10px;
+  transition:opacity .2s;
+}
+.fixed-card:hover .fixed-card-cta{opacity:.88}
+.fixed-badge{
+  position:absolute;top:8px;left:8px;background:rgba(8,12,14,.82);
+  border:1px solid var(--ac);color:var(--ac);
+  font-size:8px;letter-spacing:2px;padding:2px 6px;border-radius:3px;
+}
+
+.feed-label{
+  display:flex;align-items:center;gap:10px;margin-bottom:12px;
+}
+.feed-label span{font-size:10px;letter-spacing:3px;color:var(--txd);text-transform:uppercase}
+.feed-label::before,.feed-label::after{content:'';flex:1;height:1px;background:var(--bd)}
+
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:3px;
+}
+.photo-item{
+  position:relative;aspect-ratio:1/1;overflow:hidden;
+  cursor:pointer;background:var(--sur2);text-decoration:none;display:block;
+}
+.photo-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+.photo-item:hover img{transform:scale(1.07)}
+.photo-ph{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-size:26px;color:var(--txd);transition:color .2s;
+}
+.photo-item:hover .photo-ph{color:var(--ac)}
+.photo-overlay{
+  position:absolute;inset:0;background:rgba(8,12,14,.58);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  opacity:0;transition:opacity .25s;
+}
+.photo-item:hover .photo-overlay{opacity:1}
+.ov-icon{font-size:20px}
+.ov-txt{font-size:9px;letter-spacing:2px;color:#fff;text-transform:uppercase}
+
+.modal-bg{
+  position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.82);
+  backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;
+  padding:16px;opacity:0;pointer-events:none;transition:opacity .25s;
+}
+.modal-bg.open{opacity:1;pointer-events:all}
+.modal{
+  background:var(--sur);border:1px solid var(--bdh);border-radius:12px;
+  max-width:760px;width:100%;display:flex;overflow:hidden;max-height:90vh;
+}
+.modal-img{flex:0 0 48%;background:#000}
+.modal-img img{width:100%;height:100%;object-fit:cover;display:block}
+.modal-img-ph{width:100%;height:100%;min-height:300px;display:flex;align-items:center;justify-content:center;font-size:52px;color:var(--txd)}
+.modal-side{flex:1;display:flex;flex-direction:column;overflow-y:auto}
+.modal-head{
+  padding:14px 18px;border-bottom:1px solid var(--bd);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.modal-user{display:flex;align-items:center;gap:10px}
+.modal-av{
+  width:30px;height:30px;border-radius:50%;background:var(--ac);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;color:#080c0e;font-family:var(--head);font-weight:700;
+}
+.modal-name{font-size:13px;color:#fff;font-family:var(--head);font-weight:600}
+.modal-x{background:none;border:none;cursor:pointer;color:var(--txd);font-size:20px;transition:color .2s}
+.modal-x:hover{color:#fff}
+.modal-body{padding:18px;flex:1}
+.modal-title{font-family:var(--head);font-size:17px;font-weight:700;color:#fff;margin-bottom:8px}
+.modal-caption{font-size:13px;line-height:1.7;color:var(--tx);margin-bottom:14px}
+.modal-lbl{font-size:9px;letter-spacing:2px;color:var(--txd);text-transform:uppercase;margin-bottom:5px}
+.modal-btn{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  background:var(--ac);color:#080c0e;font-family:var(--head);
+  font-weight:700;font-size:14px;letter-spacing:1px;
+  border-radius:8px;padding:11px 18px;text-decoration:none;transition:opacity .2s;
+}
+.modal-btn:hover{opacity:.85}
+.modal-foot{
+  padding:12px 18px;border-top:1px solid var(--bd);
+  display:flex;gap:14px;font-size:12px;color:var(--txd);
+}
+@media(max-width:580px){
+  .modal{flex-direction:column}
+  .modal-img{flex:0 0 auto;height:220px}
+}
+
+.pp-bg{
+  position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.88);
+  backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;
+  padding:20px;opacity:0;pointer-events:none;transition:opacity .25s;
+}
+.pp-bg.open{opacity:1;pointer-events:all}
+.pp-box{
+  background:var(--sur);border:1px solid var(--bd);border-radius:12px;
+  max-width:680px;width:100%;max-height:90vh;overflow-y:auto;padding:32px;
+}
+.pp-box h2{font-family:var(--head);font-size:22px;font-weight:700;color:#fff;margin-bottom:4px}
+.pp-box .pp-date{font-size:11px;color:var(--txd);margin-bottom:24px;letter-spacing:1px}
+.pp-box h3{font-family:var(--head);font-size:15px;font-weight:600;color:var(--ac);margin:20px 0 8px;letter-spacing:1px}
+.pp-box p{font-size:13px;line-height:1.8;color:var(--tx);margin-bottom:10px}
+.pp-box ul{font-size:13px;line-height:1.8;color:var(--tx);margin:0 0 10px 18px}
+.pp-box a{color:var(--ac2);text-decoration:none}
+.pp-close{
+  display:flex;align-items:center;justify-content:center;
+  margin-top:24px;background:var(--sur2);border:1px solid var(--bd);
+  color:var(--tx);font-family:var(--head);font-size:14px;font-weight:600;
+  letter-spacing:1px;border-radius:8px;padding:10px 24px;cursor:pointer;
+  transition:border-color .2s,color .2s;width:100%;
+}
+.pp-close:hover{border-color:var(--bdh);color:var(--ac)}
+
+.footer{
+  text-align:center;padding:32px 0 16px;font-size:11px;
+  color:var(--txd);letter-spacing:1px;border-top:1px solid var(--bd);margin-top:32px;
+}
+.footer a{color:var(--ac);text-decoration:none}
+.pp-link{
+  background:none;border:none;color:var(--txd);font-family:var(--mono);
+  font-size:11px;letter-spacing:1px;cursor:pointer;text-decoration:underline;
+  text-underline-offset:3px;transition:color .2s;padding:0;
+}
+.pp-link:hover{color:var(--ac)}
+
+.status{
+  display:flex;align-items:center;gap:6px;justify-content:center;
+  font-size:10px;color:var(--txd);letter-spacing:1px;
+  padding:6px 0 0;margin-bottom:-8px;
+}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--ac);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,229,160,.4)}50%{opacity:.7;box-shadow:0 0 0 4px rgba(0,229,160,0)}}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.profile{animation:fadeUp .6s ease both}
+.fixed-grid{animation:fadeUp .6s .1s ease both}
+.photo-grid{animation:fadeUp .6s .2s ease both}
+
+@media(max-width:480px){
+  .profile{flex-direction:column;gap:16px}
+  .stats{gap:14px}
+}
+</style>
+</head>
+<body>
+
+<div class="ad-strip">
+  <!-- Cole aqui o código do Google AdSense -->
+  <div class="ad-box">
+    <span class="ad-box-label">Espaço Publicitário</span>
+    <span class="ad-box-sub">728 × 90 · Substitua pelo bloco AdSense</span>
+  </div>
+</div>
+
+<div class="page">
+
+  <div class="status">
+    <div class="dot"></div>
+    <span>ONLINE</span>
+    <span style="opacity:.3">·</span>
+    <span id="clock"></span>
+  </div>
+
+  <div class="profile">
+    <div class="av-zone">
+      <div class="av-ring">
+        <div class="av-inner">
+          <!-- Substitua o src pela URL da sua foto -->
+          <img src="" alt="@rafael___nascimento" onerror="this.style.display='none'">
+        </div>
+      </div>
+    </div>
+    <div class="profile-info">
+      <div class="handle-row">
+        <span class="handle">@rafael___nascimento</span>
+        <button class="follow-btn" onclick="window.open('https://instagram.com/rafael___nascimento','_blank')">SEGUIR</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat-n">350</div><div class="stat-l">publicações</div></div>
+        <div class="stat"><div class="stat-n">90K</div><div class="stat-l">seguidores</div></div>
+        <div class="stat"><div class="stat-n">382</div><div class="stat-l">seguindo</div></div>
+      </div>
+      <div class="bio">
+        <strong>Investigação Digital · OSINT · Tecnologia</strong><br>
+        Dicas de segurança, ferramentas e cursos para você dominar o mundo digital.<br>
+        <a href="https://seusite.com" target="_blank">🔗 seusite.com</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="fixed-label"><span>📌 Fixados</span></div>
+
+  <div class="fixed-grid">
+
+    <a href="https://seulink1.com" target="_blank" class="fixed-card">
+      <div class="fixed-badge">TOP</div>
+      <div class="fixed-card-ph">🔐</div>
+      <div class="fixed-card-body">
+        <div class="fixed-card-tag">Curso</div>
+        <div class="fixed-card-title">✏️ Produto 1</div>
+        <div class="fixed-card-desc">Descrição curta aqui</div>
+        <div class="fixed-card-cta">Acessar →</div>
+      </div>
+    </a>
+
+    <a href="https://seulink2.com" target="_blank" class="fixed-card">
+      <div class="fixed-card-ph">🛡️</div>
+      <div class="fixed-card-body">
+        <div class="fixed-card-tag">E-book</div>
+        <div class="fixed-card-title">✏️ Produto 2</div>
+        <div class="fixed-card-desc">Descrição curta aqui</div>
+        <div class="fixed-card-cta">Acessar →</div>
+      </div>
+    </a>
+
+    <a href="https://seulink3.com" target="_blank" class="fixed-card">
+      <div class="fixed-card-ph">🕵️</div>
+      <div class="fixed-card-body">
+        <div class="fixed-card-tag">Ferramenta</div>
+        <div class="fixed-card-title">✏️ Produto 3</div>
+        <div class="fixed-card-desc">Descrição curta aqui</div>
+        <div class="fixed-card-cta">Acessar →</div>
+      </div>
+    </a>
+
+    <a href="https://seulink4.com" target="_blank" class="fixed-card">
+      <div class="fixed-card-ph">💻</div>
+      <div class="fixed-card-body">
+        <div class="fixed-card-tag">Mentoria</div>
+        <div class="fixed-card-title">✏️ Produto 4</div>
+        <div class="fixed-card-desc">Descrição curta aqui</div>
+        <div class="fixed-card-cta">Acessar →</div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="feed-label"><span>Publicações</span></div>
+
+  <div class="photo-grid">
+
+    <div class="photo-item" onclick="openModal(this)"
+         data-title="✏️ Título do Post 1"
+         data-caption="Descrição detalhada desta publicação. Edite aqui."
+         data-link="https://seulink1.com" data-label="Ver conteúdo">
+      <div class="photo-ph">📱</div>
+      <div class="photo-overlay"><div class="ov-icon">🔗</div><div class="ov-txt">VER MAIS</div></div>
+    </div>
+
+    <div class="photo-item" onclick="openModal(this)"
+         data-title="✏️ Título do Post 2"
+         data-caption="Descrição detalhada desta publicação. Edite aqui."
+         data-link="https://seulink2.com" data-label="Acessar">
+      <div class="photo-ph">🔍</div>
+      <div class="photo-overlay"><div class="ov-icon">🔗</div><div class="ov-txt">VER MAIS</div></div>
+    </div>
+
+    <div class="photo-item" onclick="openModal(this)"
+         data-title="✏️ Título do Post 3"
+         data-caption="Descrição detalhada desta publicação. Edite aqui."
+         data-link="https://seulink3.com" data-label="Acessar">
+      <div class="photo-ph">🛡️</div>
+      <div class="photo-overlay"><div class="ov-icon">🔗</div><div class="ov-txt">VER MAIS</div></div>
+    </div>
+
+    <div class="photo-item" onclick="openModal(this)"
+         data-title="✏️ Título do Post 4"
+         data-caption="Descrição detalhada desta publicação. Edite aqui."
+         data-link="https://seulink4.com" data-label="Acessar">
+      <div class="photo-ph">💻</div>
+      <div class="photo-overlay"><div class="ov-icon">🔗</div><div class="ov-txt">VER MAIS</div></div>
+    </div>
+
+    <div class="photo-item" onclick="openModal(this)"
+         data-title="✏️ Título do Post 5"
+         data-caption="Descrição detalhada desta publicação. Edite aqui."
+         data-link="https://seulink5.com" data-label="Acessar">
+      <div class="photo-ph">🔐</div>
+      <div class="photo-overlay"><div class="ov-icon">🔗</div><div class="ov-txt">VER MAIS</div></div>
+    </div>
+
+    <div class="photo-item" onclick="openModal(this)"
+         data-title="✏️ Título do Post 6"
+         data-caption="Descrição detalhada desta publicação. Edite aqui."
+         data-link="https://seulink6.com" data-label="Acessar">
+      <div class="photo-ph">🕵️</div>
+      <div class="photo-overlay"><div class="ov-icon">🔗</div><div class="ov-txt">VER MAIS</div></div>
+    </div>
+
+    <div class="photo-item" onclick="openModal(this)"
+         data-title="✏️ Título do Post 7"
+         data-caption="Descrição detalhada desta publicação. Edite aqui."
+         data-link="https://seulink7.com" data-label="Acessar">
+      <div class="photo-ph">📊</div>
+      <div class="photo-overlay"><div class="ov-icon">🔗</div><div class="ov-txt">VER MAIS</div></div>
+    </div>
+
+    <div class="photo-item" onclick="openModal(this)"
+         data-title="✏️ Título do Post 8"
+         data-caption="Descrição detalhada desta publicação. Edite aqui."
+         data-link="https://seulink8.com" data-label="Acessar">
+      <div class="photo-ph">🌐</div>
+      <div class="photo-overlay"><div class="ov-icon">🔗</div><div class="ov-txt">VER MAIS</div></div>
+    </div>
+
+    <div class="photo-item" onclick="openModal(this)"
+         data-title="✏️ Título do Post 9"
+         data-caption="Descrição detalhada desta publicação. Edite aqui."
+         data-link="https://seulink9.com" data-label="Acessar">
+      <div class="photo-ph">⚡</div>
+      <div class="photo-overlay"><div class="ov-icon">🔗</div><div class="ov-txt">VER MAIS</div></div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>
+      <a href="https://instagram.com/rafael___nascimento" target="_blank">@rafael___nascimento</a>
+      &nbsp;·&nbsp; Investigação Digital
+      &nbsp;·&nbsp; &copy; <span id="yr"></span>
+    </p>
+    <p style="margin-top:8px">
+      <button class="pp-link" onclick="openPP()">Política de Privacidade</button>
+    </p>
+  </div>
+
+</div>
+
+<div class="modal-bg" id="modal" onclick="handleBg(event)">
+  <div class="modal">
+    <div class="modal-img" id="modal-img-col">
+      <div class="modal-img-ph" id="modal-ph">📷</div>
+    </div>
+    <div class="modal-side">
+      <div class="modal-head">
+        <div class="modal-user">
+          <div class="modal-av">RN</div>
+          <div class="modal-name">@rafael___nascimento</div>
+        </div>
+        <button class="modal-x" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-title" id="modal-title">Título</div>
+        <div class="modal-caption" id="modal-caption">Descrição</div>
+        <div class="modal-lbl">🔗 Link</div>
+        <a class="modal-btn" id="modal-btn" href="#" target="_blank">Acessar →</a>
+      </div>
+      <div class="modal-foot">
+        <span>❤️ <span id="modal-likes">0</span></span>
+        <span>💬 Clique para acessar</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pp-bg" id="pp" onclick="handlePPbg(event)">
+  <div class="pp-box">
+    <h2>Política de Privacidade</h2>
+    <p class="pp-date">Última atualização: <span id="pp-date"></span></p>
+
+    <p>Esta Política de Privacidade descreve como <strong>@rafael___nascimento</strong> ("nós", "nosso" ou "site") coleta, usa e protege as informações dos visitantes deste site.</p>
+
+    <h3>1. Informações Coletadas</h3>
+    <p>Este site pode coletar as seguintes informações de forma automática:</p>
+    <ul>
+      <li>Endereço IP e dados de acesso (via servidor de hospedagem)</li>
+      <li>Tipo de navegador e sistema operacional</li>
+      <li>Páginas visitadas e tempo de permanência</li>
+      <li>Dados de cookies e tecnologias similares</li>
+    </ul>
+
+    <h3>2. Uso de Cookies</h3>
+    <p>Utilizamos cookies para melhorar a experiência de navegação. Ao continuar navegando neste site, você concorda com o uso de cookies.</p>
+
+    <h3>3. Google AdSense</h3>
+    <p>Este site utiliza o Google AdSense para exibir anúncios. O Google pode usar cookies para personalizar anúncios com base nas suas visitas anteriores a este e a outros sites. Você pode optar por não receber anúncios personalizados acessando <a href="https://www.google.com/settings/ads" target="_blank">Configurações de Anúncios do Google</a>.</p>
+
+    <h3>4. Links de Terceiros</h3>
+    <p>Este site contém links para sites e serviços de terceiros. Não nos responsabilizamos pelas práticas de privacidade desses sites.</p>
+
+    <h3>5. Dados Pessoais</h3>
+    <p>Este site não solicita, coleta ou armazena dados pessoais como nome, e-mail ou documentos de identificação.</p>
+
+    <h3>6. Segurança</h3>
+    <p>Empregamos medidas de segurança adequadas para proteger as informações coletadas automaticamente.</p>
+
+    <h3>7. Direitos do Usuário (LGPD)</h3>
+    <p>Em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você tem direito a:</p>
+    <ul>
+      <li>Confirmar a existência de tratamento de dados</li>
+      <li>Solicitar acesso, correção ou exclusão dos seus dados</li>
+      <li>Revogar o consentimento a qualquer momento</li>
+    </ul>
+    <p>Para exercer esses direitos, entre em contato pelo Instagram: <a href="https://instagram.com/rafael___nascimento" target="_blank">@rafael___nascimento</a></p>
+
+    <h3>8. Contato</h3>
+    <p>Em caso de dúvidas, entre em contato pelo Instagram: <a href="https://instagram.com/rafael___nascimento" target="_blank">@rafael___nascimento</a></p>
+
+    <button class="pp-close" onclick="closePP()">Fechar ✕</button>
+  </div>
+</div>
+
+<script>
+function tick(){document.getElementById('clock').textContent=new Date().toLocaleTimeString('pt-BR')}
+tick();setInterval(tick,1000);
+document.getElementById('yr').textContent=new Date().getFullYear();
+document.getElementById('pp-date').textContent=new Date().toLocaleDateString('pt-BR');
+
+function openModal(el){
+  document.getElementById('modal-title').textContent=el.dataset.title||'Publicação';
+  document.getElementById('modal-caption').textContent=el.dataset.caption||'';
+  const btn=document.getElementById('modal-btn');
+  btn.href=el.dataset.link||'#';
+  btn.textContent=(el.dataset.label||'Acessar')+' →';
+  document.getElementById('modal-likes').textContent=Math.floor(Math.random()*900+50);
+  const ph=document.getElementById('modal-ph');
+  const col=document.getElementById('modal-img-col');
+  const img=el.querySelector('img');
+  col.querySelectorAll('img').forEach(i=>i.remove());
+  if(img){
+    ph.style.display='none';
+    const ni=document.createElement('img');
+    ni.src=img.src;ni.style.cssText='width:100%;height:100%;object-fit:cover;display:block';
+    col.insertBefore(ni,ph);
+  }else{
+    ph.style.display='flex';
+    const eph=el.querySelector('.photo-ph');
+    ph.textContent=eph?eph.textContent:'📷';
+  }
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
+function handleBg(e){if(e.target===document.getElementById('modal'))closeModal()}
+
+function openPP(){document.getElementById('pp').classList.add('open');document.body.style.overflow='hidden';}
+function closePP(){document.getElementById('pp').classList.remove('open');document.body.style.overflow='';}
+function handlePPbg(e){if(e.target===document.getElementById('pp'))closePP()}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closePP()}});
+</script>
+</body>
+</html>
